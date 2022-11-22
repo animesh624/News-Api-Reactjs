@@ -6,6 +6,7 @@ import News from './components/News';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import LoadingBar from 'react-top-loading-bar'
 
+// There are two endpoints for the newsapi i.e, everything and top-headlines and we will hit top headlines
 const App = ()=> {
   const pageSize = 5;
   const apiKey = process.env.REACT_APP_NEWS_API

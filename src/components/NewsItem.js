@@ -2,6 +2,8 @@ import React from 'react'
 
 const NewsItem = (props)=> {
         let { title, description, imageUrl, newsUrl, author, date, source } = props;
+        // This is destructuring.Means that we pick the values given in {} from the props which will be passed while calling the component
+        // So we can add as many values in {}  that will be passed from another component as props
         return (
             <div className="my-3">
                 <div className="card">
