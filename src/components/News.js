@@ -53,7 +53,8 @@ const News = (props)=>{
         return (
             <>
                 <h1 className="text-center" style={{ margin: '35px 0px', marginTop: '90px' }}>NewsLetter - Top {capitalizeFirstLetter(props.category)} Headlines</h1>
-                {loading && <Spinner />}
+                {loading && <Spinner />}  
+                {/* This means if loading is true then only add spinner component */}
                 <InfiniteScroll
                     dataLength={articles.length}
                     next={fetchMoreData}
