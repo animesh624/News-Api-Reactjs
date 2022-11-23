@@ -67,6 +67,7 @@ const News = (props)=>{
                         {articles.map((element) => {
                             return <div className="col-md-4" key={element.url}>
                                 {/* Key:While traversing the elements using map we have to give unique key to each element.In our article part the unique element is the url. */}
+                                {/* If we do not give key then title bar will show navgation but no loading of category news will happend.When wi give key the remounting of that particular category news happens*/}
                                 {/* col-md-4 means that medium devices mee 4 column ki width lelegi.(12 coulumn ki width hoti h bootstrap me) */}
                                 <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description : ""} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
                                 {/* ? is used in order to check whether that is null or not..Because slice will give error with null */}
