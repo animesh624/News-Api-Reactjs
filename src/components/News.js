@@ -23,10 +23,10 @@ const News = (props)=>{
         let data = await fetch(url);  // Using this we have fetched data from 
         // Fetch Api takes url and return promise
         // async await means that aap isko async krrde aur fetch jo promise return krra uske liye wait kree i.e, async function apne body ke andar wait krr skta h kucch promise ko resolve hone ke liye
-        props.setProgress(30);
+        props.setProgress(30);  // when something is loaded
         let parsedData = await data.json()
         // Now this parsed data contain all the information obtained from the newsapi in the form of json whose sample is saved on sampleOutput.json in this system
-        props.setProgress(70);
+        props.setProgress(70);  // when some more is loaded
         setArticles(parsedData.articles)
         setTotalResults(parsedData.totalResults)
         setLoading(false)
