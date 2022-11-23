@@ -40,13 +40,13 @@ const News = (props)=>{
     }, [])
 
 
-    const fetchMoreData = async () => {   
+    const fetchMoreData = async () => {     // used in infinite scroll to fetch more data when we will reach the end of current page
         const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
         setPage(page+1) 
         let data = await fetch(url);
         let parsedData = await data.json()
         
-        setArticles(articles.concat(parsedData.articles))
+        setArticles(articles.concat(parsedData.articles))  //This line will concatenate new data to the present data when we will reach the end of page
         setTotalResults(parsedData.totalResults)
       };
  
@@ -55,12 +55,15 @@ const News = (props)=>{
                 <h1 className="text-center" style={{ margin: '35px 0px', marginTop: '90px' }}>NewsLetter - Top {capitalizeFirstLetter(props.category)} Headlines</h1>
                 {loading && <Spinner />}  
                 {/* This means if loading is true then only add spinner component */}
+                {/* For using infinite scroll we have to install some package using npm website */}
+                
                 <InfiniteScroll
                     dataLength={articles.length}
                     next={fetchMoreData}
                     hasMore={articles.length !== totalResults}
                     loader={<Spinner/>}
                 > 
+                {/* Idea of infinite scroll is that we will keep pre data as it is and we will concatenate new data on the previous data */}
                     <div className="container">
                          
                     <div className="row">
