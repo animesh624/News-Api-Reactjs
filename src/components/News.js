@@ -16,7 +16,7 @@ const News = (props)=>{
     } 
 
     const updateNews = async ()=> {
-        props.setProgress(10);
+        props.setProgress(10);   // this is the initial progess of top loading bar that will be displayed when the page loads
         const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;   
         // This url will be used to fecth the news
         setLoading(true)
@@ -30,7 +30,7 @@ const News = (props)=>{
         setArticles(parsedData.articles)
         setTotalResults(parsedData.totalResults)
         setLoading(false)
-        props.setProgress(100);
+        props.setProgress(100);  // this is when the page load is completed then we will set the progress of our top loading bar as 100.
     }
 
     useEffect(() => {

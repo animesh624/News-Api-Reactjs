@@ -11,7 +11,7 @@ const App = ()=> {
   const pageSize = 5;  //This indicates no of items that will be displayed on one page
   const apiKey = process.env.REACT_APP_NEWS_API
   // const apiKey="5a41596f2241456dac856de7c2853e01"
-  const [progress, setProgress] = useState(0)
+  const [progress, setProgress] = useState(0)  // This is used to change the progess of our top loading bar
  
     return (
       <div>
@@ -20,8 +20,10 @@ const App = ()=> {
         <LoadingBar
         height={3}
         color='#f11946'
-        progress={progress} 
-      />
+        progress={progress}   // this denoted the actual progess
+      /> 
+      {/* This is the loading bar which is used to indicate the progess of the loading page.Since in the single page application using react page do not reload then to keep the track of loading we keep top loading bar */}
+      {/* And we will use loading bar only when we start application and also when we change category and not while loading news on infinite scroll */}
         <Switch>
           <Route exact path="/"><News setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize} country="in" category="general"/></Route> 
           {/* Key is used here to uniquely identify each component and its necessary to use it else we will not be able to load the news item of that particular category althoug without key we will see the changing title in the title bar */}
