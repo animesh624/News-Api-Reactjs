@@ -5,10 +5,10 @@ import NavBar from './components/NavBar';
 import News from './components/News';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import LoadingBar from 'react-top-loading-bar'
-
+//inside the render() we cannot change the state of component
 // There are two endpoints for the newsapi i.e, everything and top-headlines and we will hit top headlines
 const App = ()=> {
-  const pageSize = 5;
+  const pageSize = 5;  //This indicates no of items that will be displayed on one page
   const apiKey = process.env.REACT_APP_NEWS_API
   // const apiKey="5a41596f2241456dac856de7c2853e01"
   const [progress, setProgress] = useState(0)
