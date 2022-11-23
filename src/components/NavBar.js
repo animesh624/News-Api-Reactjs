@@ -6,6 +6,7 @@ const NavBar = () => {
     return (
         <div>
             <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+                {/* fixed-top: this is the class of bootstrap that is used to make the navbar sticky which means that when we will be at the bottom of the page also then too the navbar will be displayed at the top */}
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">NewsLetter</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
