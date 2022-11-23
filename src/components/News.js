@@ -34,10 +34,11 @@ const News = (props)=>{
     }
 
     useEffect(() => {
-        document.title = `${capitalizeFirstLetter(props.category)} - NewsLetter`;
-        updateNews(); 
+        document.title = `${capitalizeFirstLetter(props.category)} - NewsLetter`;   
+        updateNews();     // These two lines are the effect that will be performed using useEffect
         // eslint-disable-next-line
-    }, [])
+    }, [])  // []) This line is for that kis effect ke change me hmara useEffect run ho
+    // the work that was done by componentDidMount in class based componenet..This work is done by useEffect in function based component
 
 
     const fetchMoreData = async () => {     // used in infinite scroll to fetch more data when we will reach the end of current page

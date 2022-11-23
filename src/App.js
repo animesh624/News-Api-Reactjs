@@ -13,6 +13,7 @@ const App = ()=> {
   // const apiKey="5a41596f2241456dac856de7c2853e01"
   //.env this is environmental variable.And we can create our environemnt variable and use them that start with REACT_APP and this is also added in gitignore
   const [progress, setProgress] = useState(0)  // This is used to change the progess of our top loading bar
+  // useState hook is used to set the initial value of state
  
     return (
       <div>
