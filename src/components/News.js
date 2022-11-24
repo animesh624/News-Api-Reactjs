@@ -29,12 +29,12 @@ const News = (props)=>{
         props.setProgress(70);  // move loading bar furthur.
         setArticles(parsedData.articles)
         setTotalResults(parsedData.totalResults)
-        setLoading(false)
+        setLoading(false)   // This means that loading has been done so loading is false and spinner will disappear.
         props.setProgress(100);  // this is when the page load is completed then we will set the progress of our top loading bar as 100.
     }
 
     useEffect(() => {
-        document.title = `${capitalizeFirstLetter(props.category)} - NewsLetter`;   
+        document.title = `${capitalizeFirstLetter(props.category)} - NewsLetter`;    // Title of our web page
         updateNews();     // These two lines are the effect that will be performed using useEffect
         // eslint-disable-next-line
     }, [])  // []) This line is for that kis effect ke change me hmara useEffect run ho
@@ -47,7 +47,7 @@ const News = (props)=>{
         let data = await fetch(url);
         let parsedData = await data.json()
         
-        setArticles(articles.concat(parsedData.articles))  //This line will concatenate new data to the present data when we will reach the end of page
+        setArticles(articles.concat(parsedData.articles))  //This line will concatenate new data to the present data when we will reach the end of page in order to execute infinite scroll
         setTotalResults(parsedData.totalResults)
       };
  
@@ -69,10 +69,11 @@ const News = (props)=>{
                     <div className="container">
                          
                     <div className="row">
+                        {/* articles.map will traverse each article one by one*/}
                         {articles.map((element) => {
                             return <div className="col-md-4" key={element.url}>
-                                {/* Key:While traversing the elements using map we have to give unique key to each element.In our article part the unique element is the url. */}
-                                {/* If we do not give key then title bar will show navgation but no loading of category news will happend.When wi give key the remounting of that particular category news happens*/}
+                                {/* Key:While traversing the elements using map we have to give unique key to each element.In our article the unique element is the url. */}
+                                {/* If we do not give key then title bar will show navgation but no loading of category news will happen.When we give key the remounting of that particular category news happens*/}
                                 {/* col-md-4 means that medium devices mee 4 column ki width lelegi.(12 coulumn ki width hoti h bootstrap me) */}
                                 <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description : ""} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
                                 {/* ? is used in order to check whether that is null or not..Because slice will give error with null */}
@@ -101,4 +102,4 @@ News.propTypes = {
 
 export default News
 // Now in this also props are read only so props cannot be changed.
-// Now initially if we want to define state then we can call this.state inside constructor and main use of state is that state can be changed
+// Now initially if we want to define state then we can call this.state inside constructor and main use of state is that state can be changed(For class based component)
