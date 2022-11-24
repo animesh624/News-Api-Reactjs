@@ -6,10 +6,10 @@ import PropTypes from 'prop-types'
 import InfiniteScroll from "react-infinite-scroll-component";
 // this.setState() is used to change state in class based component
 const News = (props)=>{
-    const [articles, setArticles] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [page, setPage] = useState(1)
-    const [totalResults, setTotalResults] = useState(0)
+    const [articles, setArticles] = useState([])  // This contains the array of article fetched using api
+    const [loading, setLoading] = useState(true)  // This denotes whether page has loaded fully or currently in progress
+    const [page, setPage] = useState(1)   // This denotes the current page where we are in.In infinite scroll new page are always concatenated after the previous page
+    const [totalResults, setTotalResults] = useState(0) // totalResult is the total number of news feteched from api
     
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -20,13 +20,13 @@ const News = (props)=>{
         const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;   
         // This url will be used to fecth the news
         setLoading(true)
-        let data = await fetch(url);  // Using this we have fetched data from 
+        let data = await fetch(url);  // Using this we have fetched data from url
         // Fetch Api takes url and return promise
         // async await means that aap isko async krrde aur fetch jo promise return krra uske liye wait kree i.e, async function apne body ke andar wait krr skta h kucch promise ko resolve hone ke liye
-        props.setProgress(30);  // when something is loaded
+        props.setProgress(30);  // To move loading bar more
         let parsedData = await data.json()
         // Now this parsed data contain all the information obtained from the newsapi in the form of json whose sample is saved on sampleOutput.json in this system
-        props.setProgress(70);  // when some more is loaded
+        props.setProgress(70);  // move loading bar furthur.
         setArticles(parsedData.articles)
         setTotalResults(parsedData.totalResults)
         setLoading(false)
@@ -56,8 +56,9 @@ const News = (props)=>{
                 <h1 className="text-center" style={{ margin: '35px 0px', marginTop: '90px' }}>NewsLetter - Top {capitalizeFirstLetter(props.category)} Headlines</h1>
                 {loading && <Spinner />}  
                 {/* This means if loading is true then only add spinner component */}
+
+
                 {/* For using infinite scroll we have to install some package using npm website */}
-                
                 <InfiniteScroll
                     dataLength={articles.length}
                     next={fetchMoreData}
@@ -99,5 +100,5 @@ News.propTypes = {
 }
 
 export default News
-//Now in this also props are read only so props cannot be changed.
+// Now in this also props are read only so props cannot be changed.
 // Now initially if we want to define state then we can call this.state inside constructor and main use of state is that state can be changed

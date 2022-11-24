@@ -5,7 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
+        // StrictMode is a tool for highlighting potential problems in an application
+        // StrictMode currently helps with:
+        // 1.Identifying components with unsafe lifecycles
+        // 2.Warning about legacy string ref API usage
+        // 3.Warning about deprecated findDOMNode usage
+        // 4.Detecting unexpected side effects
+        // 5.Detecting legacy context API
+        // 6.Ensuring reusable state 
+  <React.StrictMode>  
     <App />
   </React.StrictMode>,
   document.getElementById('root')

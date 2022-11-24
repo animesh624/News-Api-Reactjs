@@ -22,7 +22,7 @@ const App = ()=> {
         <LoadingBar
         height={3}
         color='#f11946'
-        progress={progress}   // this denoted the actual progess
+        progress={progress}   // this denoted the initial progess
       /> 
       {/* This is the loading bar which is used to indicate the progess of the loading page.Since in the single page application using react page do not reload then to keep the track of loading we keep top loading bar */}
       {/* And we will use loading bar only when we start application and also when we change category and not while loading news on infinite scroll */}
